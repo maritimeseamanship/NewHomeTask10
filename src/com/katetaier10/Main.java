@@ -19,7 +19,6 @@ public class Main {
         System.out.println("The initial random array is: " + Arrays.toString(arrayRandom));
         quickSort(arrayRandom, low, high);
         System.out.println("The sorted random array is: " + Arrays.toString(arrayRandom));
-
     }
 
     private static int[] createArray() {
@@ -33,26 +32,27 @@ public class Main {
     }
 
     private static void quickSort(int[] arrayRandom, int low, int high) {
-        if(low < high){
+        if (low < high) {
             int pivot = partition(arrayRandom, low, high);
-            quickSort(arrayRandom, low, pivot-1);
-            quickSort( arrayRandom, pivot + 1, high);
+            quickSort(arrayRandom, low, pivot - 1);
+            quickSort(arrayRandom, pivot + 1, high);
         }
     }
 
-    private static void swap(int[] arrayRandom, int low, int pivot){
+    private static void swap(int[] arrayRandom, int low, int pivot) {
         int tmp = arrayRandom[low];
         arrayRandom[low] = arrayRandom[pivot];
         arrayRandom[pivot] = tmp;
     }
 
-    private static int partition(int[] arrayRandom, int low, int high){
-        int p = low, j;
-        for(j = low + 1; j <= high; j++) {
-            if(arrayRandom[j] < arrayRandom[low])
+    private static int partition(int[] arrayRandom, int low, int high) {
+        int p = low;
+        int j;
+        for (j = low + 1; j <= high; j++) {
+            if (arrayRandom[j] < arrayRandom[low]) {
                 swap(arrayRandom, ++p, j);
+            }
         }
-
         swap(arrayRandom, low, p);
         return p;
     }
